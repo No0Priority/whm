@@ -30,7 +30,7 @@ if (((location.pathname.indexOf("war.php") >= 0) || (location.pathname.indexOf("
 }
 
 function check() {
-
+    if (lastturn < 0) return;
 
 
     if (document.getElementById("play_button").style.display == 'none') {
