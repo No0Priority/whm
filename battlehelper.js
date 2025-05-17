@@ -547,6 +547,7 @@ function check() {
             if ((firewall == true) && (i != lastFire) && (i > 0)) {
                 div.style.height = "100%";
                 div.innerHTML = "<center>Огнестенка " + i + " ход.</center>";
+                console.log("fw_v1");
                 const i = 3;
                 const firewallHTML = `<span id= "firewall_counter" style = "color: black; font-size: 120%; background-color: yellow">Огнестенка на ${i} ход.<br></span>`;
                 if (document.querySelector("#firewall_counter")){
