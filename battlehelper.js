@@ -543,13 +543,20 @@ function check() {
         window.lastFire = 0;
         document.getElementById("timer").after(dopInfoPanel);
         window.testBlock = function(i = 0, firewall = false) {
-            if (chatMode() == "V") {
-                return 0;
-            }
             let div = document.getElementById("test");
             if ((firewall == true) && (i != lastFire) && (i > 0)) {
                 div.style.height = "100%";
                 div.innerHTML = "<center>Огнестенка " + i + " ход.</center>";
+                const i = 3;
+                const firewallHTML = `<span id= "firewall_counter" style = "color: black; font-size: 120%; background-color: yellow">Огнестенка на ${i} ход.<br></span>`;
+                if (document.querySelector("#firewall_counter")){
+                    document.querySelector("#firewall_counter").outerHTML = firewallHTML;
+                }
+                else{
+                    document.querySelector("#chat_format").insertAdjacentHTML("beforeend", firewallHTML)
+                }
+                setTimeout(()=>{document.querySelector("#firewall_counter").remove()}, 1000);
+                
                 lastFire = i;
                 fireInfo = true;
             } else if (firewall == false) {
