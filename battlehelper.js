@@ -582,14 +582,15 @@ function check() {
             nHP = [0, 0, 0, 0, 0, 0];
             const lordHPs = [0, 0, 0, 0, 0, 0, 0, 0];
             for (k in stage.pole.obj) {
-                let ow = (ch == 2 ? stage.pole.obj[k].owner % 2 * (-1) + 1 : +stage.pole.obj[k].owner - 1);
-                // console.log(stage.pole.obj[k].side, stage.pole.obj[k].nametxt, stage.pole.obj[k].nownumber, ow);
-                if ((stage.pole.obj[k].hero != undefined) || (stage.pole.obj[k].warmachine != undefined) || (stage.pole.obj[k].building != undefined))
+                const cre = stage.pole.obj[k];
+                let ow = (ch == 2 ? cre.owner % 2 * (-1) + 1 : +cre.owner - 1);
+                // console.log(cre.side, cre.nametxt, cre.nownumber, ow);
+                if ((cre.hero != undefined) || (cre.warmachine != undefined) || (cre.building != undefined) || cre.nametxt === "" || cre.side !== side || cre.summoned2 || cre.summonedc)
                     continue;
-                sHP[ow] += stage.pole.obj[k].maxnumber * stage.pole.obj[k].maxhealth;
-                nHP[ow] += Math.max((stage.pole.obj[k].nownumber - 1), 0) * stage.pole.obj[k].maxhealth + stage.pole.obj[k].nowhealth;
+                sHP[ow] += cre.maxnumber * cre.maxhealth;
+                nHP[ow] += Math.max((cre.nownumber - 1), 0) * cre.maxhealth + cre.nowhealth;
                 if (ch === 2){
-                    lordHPs[stage.pole.obj[k].owner - 1] += Math.max((stage.pole.obj[k].nownumber - 1), 0) * stage.pole.obj[k].maxhealth + stage.pole.obj[k].nowhealth;
+                    lordHPs[cre.owner - 1] += Math.max((cre.nownumber - 1), 0) * cre.maxhealth + cre.nowhealth;
                 }
             }
             let detailed_HPs = ["", "", "", "", "", "", "", "", "", ""];
