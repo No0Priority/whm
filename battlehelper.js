@@ -595,18 +595,18 @@ function check() {
             }
             let detailed_HPs = ["", "", "", "", "", "", "", "", "", ""];
 
-            if (ch === 2){
+            if (ch === 2 && lordHPs.filter(lord => {return lord !== 0}).length > 2){
                 for (const lord in lordHPs){
                     if (lordHPs[lord] === 0) continue;
                     if (lord % 2 != 0) detailed_HPs[0] += lordHPs[lord] + "+";
                     else detailed_HPs[1] += lordHPs[lord] + "+";
                 }    
                 for (const i in detailed_HPs){
-                    detailed_HPs[i] = detailed_HPs[0].slice(0, -1);
+                    detailed_HPs[i] = `${(detailed_HPs[i].slice(0, -1))}`;
                 }
             }
             for (let i = 1; i <= ch; i++) {
-                document.getElementById("hp" + i + "t").innerHTML = `(${detailed_HPs[i-1]}) ` + nHP[i - 1] + "/" + sHP[i - 1] + " (" + (nHP[i - 1] / sHP[i - 1] * 100).toFixed(1) + "%)";;
+                document.getElementById("hp" + i + "t").innerHTML = `detailed_HPs[i-1] + nHP[i - 1] + "/" + sHP[i - 1] + " (" + (nHP[i - 1] / sHP[i - 1] * 100).toFixed(1) + "%)";;
                 document.getElementById("hp" + i + "c").style.width = "" + Math.round(nHP[i - 1] / sHP[i - 1] * 100) + "%";
             }
         }
