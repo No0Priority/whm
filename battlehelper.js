@@ -585,7 +585,7 @@ function check() {
                 const cre = stage.pole.obj[k];
                 let ow = (ch == 2 ? cre.owner % 2 * (-1) + 1 : +cre.owner - 1);
                 // console.log(cre.side, cre.nametxt, cre.nownumber, ow);
-                if ((cre.hero != undefined) || (cre.warmachine != undefined) || (cre.building != undefined) || cre.nametxt === "" || cre.side !== side || cre.summoned2 || cre.summonedc)
+                if ((cre.hero != undefined) || (cre.warmachine != undefined) || (cre.building != undefined) || cre.nametxt === "" || cre.summoned2 || cre.summonedc)
                     continue;
                 sHP[ow] += cre.maxnumber * cre.maxhealth;
                 nHP[ow] += Math.max((cre.nownumber - 1), 0) * cre.maxhealth + cre.nowhealth;
