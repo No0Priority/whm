@@ -26,7 +26,7 @@ if (location.pathname.indexOf("leader_guild.php") >= 0) {
 
 
 if (((location.pathname.indexOf("war.php") >= 0) || (location.pathname.indexOf("warlog.php") >= 0)) && (location.href.indexOf("show_enemy") == -1)) {
-    console.log("version 2");
+    console.log("version 3");
     var timerIdn = setInterval(check, 100);
 }
 
@@ -582,7 +582,7 @@ function check() {
             nHP = [0, 0, 0, 0, 0, 0];
             for (k in stage.pole.obj) {
                 let ow = (ch == 2 ? stage.pole.obj[k].owner % 2 * (-1) + 1 : +stage.pole.obj[k].owner - 1);
-                console.log(stage.pole.obj[k].side, stage.pole.obj[k].nametxt, stage.pole.obj[k].nownumber, ow);
+                // console.log(stage.pole.obj[k].side, stage.pole.obj[k].nametxt, stage.pole.obj[k].nownumber, ow);
                 if ((stage.pole.obj[k].hero != undefined) || (stage.pole.obj[k].warmachine != undefined) || (stage.pole.obj[k].building != undefined))
                     continue;
                 sHP[ow] += stage.pole.obj[k].maxnumber * stage.pole.obj[k].maxhealth;
