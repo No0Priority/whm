@@ -598,8 +598,14 @@ function check() {
             if (ch === 2 && lordHPs.filter(lord => {return lord !== 0}).length > 2){
                 for (const lord in lordHPs){
                     if (lordHPs[lord] === 0) continue;
-                    if (lord % 2 != 0) detailed_HPs[1] += lordHPs[lord] + "+";
-                    else detailed_HPs[0] += lordHPs[lord] + "+";
+                    if (lord % 2 != 0) {
+                        if (lordHPs.filter(lord, index => {return lord !== 0 && index % 2 != 0}).length > 1)
+                            detailed_HPs[1] += lordHPs[lord] + "+";
+                    }
+                    else {
+                        if (lordHPs.filter(lord, index => {return lord !== 0 && index % 2 === 0}).length > 1)
+                            detailed_HPs[0] += lordHPs[lord] + "+";
+                    }
                 }    
                 for (const i in detailed_HPs){
                     detailed_HPs[i] = `(${detailed_HPs[i].slice(0, -1)}) `;
