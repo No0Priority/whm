@@ -26,7 +26,7 @@ if (location.pathname.indexOf("leader_guild.php") >= 0) {
 
 
 if (((location.pathname.indexOf("war.php") >= 0) || (location.pathname.indexOf("warlog.php") >= 0)) && (location.href.indexOf("show_enemy") == -1)) {
-    console.log("version 3");
+    console.log("version 4");
     var timerIdn = setInterval(check, 100);
 }
 
@@ -596,6 +596,7 @@ function check() {
 
             if (ch === 2){
                 for (const lord in lordHPs){
+                    if (lordHPs[lord] === 0) continue;
                     if (lord % 2 != 0) detailed_HPs[0] += lordHPs[lord] + "+";
                     else detailed_HPs[1] += lordHPs[lord] + "+";
                 }    
