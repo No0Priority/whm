@@ -602,7 +602,7 @@ function check() {
                     else detailed_HPs[1] += lordHPs[lord] + "+";
                 }    
                 for (const i in detailed_HPs){
-                    detailed_HPs[i] = `${(detailed_HPs[i].slice(0, -1))}`;
+                    detailed_HPs[i] = `(${detailed_HPs[i].slice(0, -1)}) `;
                 }
             }
             for (let i = 1; i <= ch; i++) {
