@@ -606,7 +606,7 @@ function check() {
                 }
             }
             for (let i = 1; i <= ch; i++) {
-                document.getElementById("hp" + i + "t").innerHTML = `detailed_HPs[i-1] + nHP[i - 1] + "/" + sHP[i - 1] + " (" + (nHP[i - 1] / sHP[i - 1] * 100).toFixed(1) + "%)";;
+                document.getElementById("hp" + i + "t").innerHTML = detailed_HPs[i-1] + nHP[i - 1] + "/" + sHP[i - 1] + " (" + (nHP[i - 1] / sHP[i - 1] * 100).toFixed(1) + "%)";
                 document.getElementById("hp" + i + "c").style.width = "" + Math.round(nHP[i - 1] / sHP[i - 1] * 100) + "%";
             }
         }
