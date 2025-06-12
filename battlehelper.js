@@ -599,11 +599,11 @@ function check() {
                 for (const lord in lordHPs){
                     if (lordHPs[lord] === 0) continue;
                     if (lord % 2 != 0) {
-                        if (lordHPs.filter(lord, index => {return lord !== 0 && index % 2 != 0}).length > 1)
+                        if (lordHPs.filter((ele, index) => {return ele !== 0 && index % 2 != 0}).length > 1)
                             detailed_HPs[1] += lordHPs[lord] + "+";
                     }
                     else {
-                        if (lordHPs.filter(lord, index => {return lord !== 0 && index % 2 === 0}).length > 1)
+                        if (lordHPs.filter((ele, index) => {return ele !== 0 && index % 2 === 0}).length > 1)
                             detailed_HPs[0] += lordHPs[lord] + "+";
                     }
                 }    
