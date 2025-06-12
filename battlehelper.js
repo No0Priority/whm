@@ -600,12 +600,14 @@ function check() {
                     if (lord % 2 != 0) detailed_HPs[0] += lordHPs[lord] + "+";
                     else detailed_HPs[1] += lordHPs[lord] + "+";
                 }    
-                detailed_HPs[0] = detailed_HPs[0].slice(0, -1);
-                detailed_HPs[1] = detailed_HPs[1].slice(0, -1);
+                for (const i in detailed_HPs){
+                    detailed_HPs[i] = detailed_HPs[0].slice(0, -1);
+                    detailed_HPs[i] += " ";
+                }
             }
             for (let i = 1; i <= ch; i++) {
-                document.getElementById("hp" + i + "t").innerHTML = `(${detailed_HPs[i-1]})` + nHP[i - 1] + "/" + sHP[i - 1] + " (" + (nHP[i - 1].toFixed(2) / sHP[i - 1] * 100) + "%)";;
-                document.getElementById("hp" + i + "c").style.width = "" + (nHP[i - 1].toFixed(2) / sHP[i - 1] * 100) + "%";
+                document.getElementById("hp" + i + "t").innerHTML = `(${detailed_HPs[i-1]})` + nHP[i - 1] + "/" + sHP[i - 1] + " (" + (nHP[i - 1] / sHP[i - 1] * 100).toFixed(1) + "%)";;
+                document.getElementById("hp" + i + "c").style.width = "" + Math.round(nHP[i - 1] / sHP[i - 1] * 100) + "%";
             }
         }
         window.infoBlock = function(i = 0) {
