@@ -581,6 +581,7 @@ function check() {
             nHP = [0, 0, 0, 0, 0, 0];
             for (k in stage.pole.obj) {
                 let ow = (ch == 2 ? stage.pole.obj[k].owner % 2 * (-1) + 1 : +stage.pole.obj[k].owner - 1);
+                console.log(k.side, k.nametxt, k.nownumber, ow);
                 if ((stage.pole.obj[k].hero != undefined) || (stage.pole.obj[k].warmachine != undefined) || (stage.pole.obj[k].building != undefined))
                     continue;
                 sHP[ow] += stage.pole.obj[k].maxnumber * stage.pole.obj[k].maxhealth;
