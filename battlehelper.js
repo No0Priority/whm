@@ -580,6 +580,7 @@ function check() {
         window.updateBar = function(ch = 2) {
             sHP = [0, 0, 0, 0, 0, 0];
             nHP = [0, 0, 0, 0, 0, 0];
+            const lordHPs = [0, 0, 0, 0, 0, 0, 0, 0];
             for (k in stage.pole.obj) {
                 let ow = (ch == 2 ? stage.pole.obj[k].owner % 2 * (-1) + 1 : +stage.pole.obj[k].owner - 1);
                 // console.log(stage.pole.obj[k].side, stage.pole.obj[k].nametxt, stage.pole.obj[k].nownumber, ow);
@@ -587,10 +588,23 @@ function check() {
                     continue;
                 sHP[ow] += stage.pole.obj[k].maxnumber * stage.pole.obj[k].maxhealth;
                 nHP[ow] += Math.max((stage.pole.obj[k].nownumber - 1), 0) * stage.pole.obj[k].maxhealth + stage.pole.obj[k].nowhealth;
+                if (ch === 2){
+                    lordHPs[stage.pole.obj[k].owner - 1] += Math.max((stage.pole.obj[k].nownumber - 1), 0) * stage.pole.obj[k].maxhealth + stage.pole.obj[k].nowhealth;
+                }
+            }
+            let detailed_HPs = ["", "", "", "", "", "", "", "", "", ""];
+
+            if (ch === 2){
+                for (const lord in lordHPs){
+                    if (lord % 2 != 0) detailed_HPs[0] += lordHPs[lord] + "+";
+                    else detailed_HPs[1] += lordHPs[lord] + "+";
+                }    
+                detailed_HPs[0] = detailed_HPs[0].slice(0, -1);
+                detailed_HPs[1] = detailed_HPs[1].slice(0, -1);
             }
             for (let i = 1; i <= ch; i++) {
-                document.getElementById("hp" + i + "t").innerHTML = "" + nHP[i - 1] + "/" + sHP[i - 1] + " (" + Math.round(nHP[i - 1] / sHP[i - 1] * 100) + "%)";;
-                document.getElementById("hp" + i + "c").style.width = "" + Math.round(nHP[i - 1] / sHP[i - 1] * 100) + "%";
+                document.getElementById("hp" + i + "t").innerHTML = `(${detailed_HPs[i-1]})` + nHP[i - 1] + "/" + sHP[i - 1] + " (" + (nHP[i - 1].toFixed(2) / sHP[i - 1] * 100) + "%)";;
+                document.getElementById("hp" + i + "c").style.width = "" + (nHP[i - 1].toFixed(2) / sHP[i - 1] * 100) + "%";
             }
         }
         window.infoBlock = function(i = 0) {
