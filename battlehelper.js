@@ -26,6 +26,7 @@ if (location.pathname.indexOf("leader_guild.php") >= 0) {
 
 
 if (((location.pathname.indexOf("war.php") >= 0) || (location.pathname.indexOf("warlog.php") >= 0)) && (location.href.indexOf("show_enemy") == -1)) {
+    console.log("version 1");
     var timerIdn = setInterval(check, 100);
 }
 
