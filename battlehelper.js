@@ -587,7 +587,7 @@ function check() {
                 // console.log(cre.side, cre.nametxt, cre.nownumber, ow);
                 if ((cre.hero != undefined) || (cre.warmachine != undefined) || (cre.building != undefined) || cre.nametxt === "" || cre.summoned2 || cre.summonedc)
                     continue;
-                sHP[ow] += cre.maxnumber * cre.maxhealth;
+                sHP[ow] += cre.maxnumber * cre.realhealth;
                 nHP[ow] += Math.max((cre.nownumber - 1), 0) * cre.maxhealth + cre.nowhealth;
                 if (ch === 2){
                     lordHPs[cre.owner - 1] += Math.max((cre.nownumber - 1), 0) * cre.maxhealth + cre.nowhealth;
